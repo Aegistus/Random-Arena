@@ -6,7 +6,8 @@ namespace Game
 {
 	public class PlayerMovement : MonoBehaviour
 	{
-		[SerializeField] float walkSpeed = 5;
+		[SerializeField] float walkSpeed = 5f;
+		[SerializeField] float runSpeed = 10f;
 		[SerializeField] float jumpHeight = 5f;
 		[SerializeField] LayerMask groundLayer;
 
@@ -55,13 +56,21 @@ namespace Game
 				moveVector += transform.right;
 			}
 
+			// jump
 			if (Input.GetKeyDown(KeyCode.Space) && groundedTimer > 0)
 			{
 				groundedTimer = 0f;
 				verticalVelocity += Mathf.Sqrt(jumpHeight * 2 * -Physics.gravity.y);
-				print("Jump");
 			}
-			moveVector *= walkSpeed;
+			
+			if (Input.GetKey(KeyCode.LeftShift) && playerGrounded)
+			{
+				moveVector *= runSpeed;
+			}
+			else
+			{
+				moveVector *= walkSpeed;
+			}
 			moveVector *= Globals.playerMoveSpeedMod;
 			moveVector = AdjustVerticalVelocityOnSlope(moveVector);
 			moveVector.y += verticalVelocity;
