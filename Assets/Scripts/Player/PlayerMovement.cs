@@ -8,6 +8,7 @@ namespace Game
 	{
 		[SerializeField] float walkSpeed = 5;
 		[SerializeField] float jumpHeight = 5f;
+		[SerializeField] LayerMask groundLayer;
 
 		CharacterController charController;
 		float groundedTimer;
@@ -62,8 +63,26 @@ namespace Game
 			}
 			moveVector *= walkSpeed;
 			moveVector *= Globals.playerMoveSpeedMod;
-			moveVector.y = verticalVelocity;
+			moveVector = AdjustVerticalVelocityOnSlope(moveVector);
+			moveVector.y += verticalVelocity;
+
 			charController.Move(moveVector * Time.deltaTime);
+		}
+
+		/// Adjusts the vertical velocity of the player if on a slope to avoid bouncing.
+		private Vector3 AdjustVerticalVelocityOnSlope(Vector3 velocity)
+		{
+			RaycastHit rayHit;
+			if (Physics.Raycast(transform.position, Vector3.down, out rayHit, 5f, groundLayer))
+			{
+				Quaternion slopeRotation = Quaternion.FromToRotation(Vector3.up, rayHit.normal);
+				Vector3 adjustedVelocity = slopeRotation * velocity;
+				if (adjustedVelocity.y < 0)
+				{
+					return adjustedVelocity;
+				}
+			}
+			return velocity;
 		}
 	}
 }
