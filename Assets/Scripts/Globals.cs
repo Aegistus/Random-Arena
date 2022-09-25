@@ -6,7 +6,10 @@ namespace Game
 {
 	public static class Globals
 	{
+		// Player
 	    public static float playerMoveSpeedMod = 1f;
+		public static float playerDamageTakenMod = 1f;
+		public static float playerHealTakenMod = 1f;
 	}
 }
 
