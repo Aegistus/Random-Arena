@@ -700,6 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 5
+  jumpHeight: 2
 --- !u!1001 &1435484477
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,8 +7,11 @@ namespace Game
 	public class PlayerMovement : MonoBehaviour
 	{
 		[SerializeField] float walkSpeed = 5;
+		[SerializeField] float jumpHeight = 5f;
 
 		CharacterController charController;
+		float groundedTimer;
+		float verticalVelocity = 0f;
 
 		void Awake()
 		{
@@ -17,6 +20,22 @@ namespace Game
 
 		void Update()
 		{
+			bool playerGrounded = charController.isGrounded;
+
+			if (playerGrounded)
+			{
+				groundedTimer = .2f;
+				if (verticalVelocity < 0)
+				{
+					verticalVelocity = 0f;
+				}
+			}
+			if (groundedTimer > 0)
+			{
+				groundedTimer -= Time.deltaTime;
+			}
+			verticalVelocity += Physics.gravity.y * Time.deltaTime;
+
 			Vector3 moveVector = Vector3.zero;
 			if (Input.GetKey(KeyCode.W))
 			{
@@ -34,7 +53,17 @@ namespace Game
 			{
 				moveVector += transform.right;
 			}
-			charController.Move(moveVector * walkSpeed * Time.deltaTime * Globals.playerMoveSpeedMod);
+
+			if (Input.GetKeyDown(KeyCode.Space) && groundedTimer > 0)
+			{
+				groundedTimer = 0f;
+				verticalVelocity += Mathf.Sqrt(jumpHeight * 2 * -Physics.gravity.y);
+				print("Jump");
+			}
+			moveVector *= walkSpeed;
+			moveVector *= Globals.playerMoveSpeedMod;
+			moveVector.y = verticalVelocity;
+			charController.Move(moveVector * Time.deltaTime);
 		}
 	}
 }
