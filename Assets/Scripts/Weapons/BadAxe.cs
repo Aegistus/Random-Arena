@@ -6,9 +6,16 @@ namespace Game
 {
 	public class BadAxe : Weapon
 	{
+		Animator anim;
+
+		void Awake()
+		{
+			anim = GetComponent<Animator>();
+		}
+
 	    public override void StartAttack()
 		{
-			print("Attack");
+			anim.Play("Attack");
 		}
 
 		public override void EndAttack()
