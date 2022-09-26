@@ -11,14 +11,16 @@ namespace Game
 		Animator anim;
 		bool attacking = false;
 		float attackTime = .75f;
+		GameObject owner = null;
 
 		void Awake()
 		{
 			anim = GetComponent<Animator>();
 		}
 
-	    public override void StartAttack()
+	    public override void StartAttack(GameObject owner)
 		{
+			this.owner = owner;
 			anim.Play("Attack");
 			attacking = true;
 		}
@@ -42,7 +44,7 @@ namespace Game
 				Health health = other.GetComponentInParent<Health>();
 				if (health != null)
 				{
-					health.Damage(damage);
+					health.Damage(new AttackData(owner, damage));
 					attacking = false;
 				}
 			}

@@ -21,9 +21,14 @@ namespace Game
 			OnHealthChange?.Invoke(currentHealth, maxHealth);
 		}
 		
-		public virtual void Damage(float damage)
+		public virtual void Damage(AttackData data)
 		{
-			currentHealth -= damage;
+			// prevents attacking self.
+			if (data.owner == gameObject)
+			{
+				return;
+			}
+			currentHealth -= data.damage;
 			if (currentHealth <= 0)
 			{
 				currentHealth = 0;

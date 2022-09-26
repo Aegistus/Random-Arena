@@ -22,7 +22,7 @@ namespace Game
 
 		void StartAttack()
 		{
-			currentWeapon.StartAttack();
+			currentWeapon.StartAttack(gameObject);
 		}
 
 		void EndAttack()

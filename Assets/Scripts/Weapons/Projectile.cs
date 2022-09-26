@@ -8,6 +8,13 @@ namespace Game
 	{
 	    public float speed = 50f;
 		public float damage = 20f;
+		
+		GameObject owner;
+
+		public void SetOwner(GameObject owner)
+		{
+			this.owner = owner;
+		}
 
 		void Update()
 		{
@@ -19,7 +26,7 @@ namespace Game
 			Health otherHealth = collision.collider.GetComponentInParent<Health>();
 			if (otherHealth != null)
 			{
-				otherHealth.Damage(damage);
+				otherHealth.Damage(new AttackData(owner, damage));
 			}
 		}
 	}

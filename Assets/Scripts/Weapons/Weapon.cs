@@ -6,10 +6,10 @@ namespace Game
 {
 	public abstract class Weapon : MonoBehaviour
 	{
-	    public abstract void StartAttack();
+	    public abstract void StartAttack(GameObject attacker);
 
 		public abstract void EndAttack();
-		
+
 	}
 }
 

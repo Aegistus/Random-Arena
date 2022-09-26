@@ -6,27 +6,15 @@ namespace Game
 {
 	public class PlayerHealth : Health
 	{
-	    public override void Damage(float damage)
+	    public override void Damage(AttackData data)
 		{
-			base.Damage(damage * Globals.playerDamageTakenMod);
+			data.damage *= Globals.playerDamageTakenMod;
+			base.Damage(data);
 		}
 
 		public override void Heal(float heal)
 		{
 			base.Heal(heal * Globals.playerHealTakenMod);
-		}
-
-		// test
-		void Update()
-		{
-			if (Input.GetKeyDown(KeyCode.G))
-			{
-				Damage(10);
-			}
-			if (Input.GetKeyDown(KeyCode.F))
-			{
-				Heal(10);
-			}
 		}
 	}
 }

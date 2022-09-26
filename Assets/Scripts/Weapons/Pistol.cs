@@ -18,9 +18,10 @@ namespace Game
 		}
 
 		
-		public override void StartAttack()
+		public override void StartAttack(GameObject owner)
 		{
-			pool.GetObjectOfTypeFromPool(PoolManager.PoolTag.Bullet, gunTip.position, gunTip.rotation);
+			GameObject bullet = pool.GetObjectOfTypeFromPool(PoolManager.PoolTag.Bullet, gunTip.position, gunTip.rotation);
+			bullet.GetComponent<Projectile>().SetOwner(owner);
 			anim.Play("Shoot");
 		}
 
