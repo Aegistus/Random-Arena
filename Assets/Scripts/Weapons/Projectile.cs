@@ -11,7 +11,7 @@ namespace Game
 
 		void Update()
 		{
-			transform.Translate(transform.forward * speed);
+			transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
 		}
 
 		void OnCollisionEnter(Collision collision)
@@ -21,7 +21,7 @@ namespace Game
 			{
 				otherHealth.Damage(damage);
 			}
-			gameObject.SetActive(false);
+			//gameObject.SetActive(false);
 		}
 	}
 }

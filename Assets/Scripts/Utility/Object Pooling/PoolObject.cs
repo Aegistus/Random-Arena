@@ -8,14 +8,12 @@ public class PoolObject : MonoBehaviour
 
     private ParticleSystem particles;
     private AudioSource audioSource;
-    //private IEffect effect;
     private bool justSpawned = true;
 
     private void Awake()
     {
         particles = GetComponent<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
-        //effect = GetComponent<IEffect>();
     }
 
     protected virtual void OnEnable()
@@ -30,10 +28,6 @@ public class PoolObject : MonoBehaviour
             {
                 audioSource.Play();
             }
-            //if (effect != null)
-            //{
-            //    effect.StartEffect();
-            //}
             StartCoroutine(EndLifeTime());
         }
         else
@@ -45,6 +39,8 @@ public class PoolObject : MonoBehaviour
     private IEnumerator EndLifeTime()
     {
         yield return new WaitForSeconds(lifeTime);
+        transform.localPosition = Vector3.zero;
+        transform.rotation = Quaternion.identity;
         gameObject.SetActive(false);
     }
 }
