@@ -7,7 +7,9 @@ namespace Game
 	public class Pistol : Weapon
 	{
 		public Transform gunTip;
+		public float resetTime = .2f;
 
+		bool readyToFire = true;
 		PoolManager pool;
 		Animator anim;
 
@@ -20,9 +22,20 @@ namespace Game
 		
 		public override void StartAttack(GameObject owner)
 		{
-			GameObject bullet = pool.GetObjectOfTypeFromPool(PoolManager.PoolTag.Bullet, gunTip.position, gunTip.rotation);
-			bullet.GetComponent<Projectile>().SetOwner(owner);
-			anim.Play("Shoot");
+			if (readyToFire)
+			{
+				GameObject bullet = pool.GetObjectOfTypeFromPool(PoolManager.PoolTag.Bullet, gunTip.position, gunTip.rotation);
+				bullet.GetComponent<Projectile>().SetOwner(owner);
+				anim.Play("Shoot");
+				readyToFire = false;
+				StartCoroutine(ShotReset());
+			}
+		}
+
+		IEnumerator ShotReset()
+		{
+			yield return new WaitForSeconds(resetTime);
+			readyToFire = true;
 		}
 
 		public override void EndAttack()
