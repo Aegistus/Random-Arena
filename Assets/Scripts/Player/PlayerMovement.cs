@@ -8,12 +8,14 @@ namespace Game
 	{
 		[SerializeField] float walkSpeed = 5f;
 		[SerializeField] float runSpeed = 10f;
+		[SerializeField] float airMoveSpeed = 3f;
 		[SerializeField] float jumpHeight = 5f;
 		[SerializeField] LayerMask groundLayer;
 
 		CharacterController charController;
 		float groundedTimer;
 		float verticalVelocity = 0f;
+		Vector3 jumpStartingVelocity;
 
 		void Awake()
 		{
@@ -27,6 +29,7 @@ namespace Game
 			if (playerGrounded)
 			{
 				groundedTimer = .2f;
+				jumpStartingVelocity = Vector3.zero;
 				if (verticalVelocity < 0)
 				{
 					verticalVelocity = 0f;
@@ -55,22 +58,38 @@ namespace Game
 			{
 				moveVector += transform.right;
 			}
+			
+			// if running
+			if (Input.GetKey(KeyCode.LeftShift) && playerGrounded)
+			{
+				moveVector *= runSpeed;
+			}
+			// if walking
+			else if (playerGrounded)
+			{
+				moveVector *= walkSpeed;
+			}
+			// if in air
+			else
+			{
+				moveVector *= airMoveSpeed;
+			}
 
 			// jump
 			if (Input.GetKeyDown(KeyCode.Space) && groundedTimer > 0)
 			{
 				groundedTimer = 0f;
 				verticalVelocity += Mathf.Sqrt(jumpHeight * 2 * -Physics.gravity.y);
+				jumpStartingVelocity = moveVector;
+				jumpStartingVelocity.y = 0;
 			}
 			
-			if (Input.GetKey(KeyCode.LeftShift) && playerGrounded)
+			// continue velocity from before jump
+			if (!playerGrounded)
 			{
-				moveVector *= runSpeed;
+				moveVector += jumpStartingVelocity;
 			}
-			else
-			{
-				moveVector *= walkSpeed;
-			}
+
 			moveVector *= Globals.playerMoveSpeedMod;
 			moveVector = AdjustVerticalVelocityOnSlope(moveVector);
 			moveVector.y += verticalVelocity;
