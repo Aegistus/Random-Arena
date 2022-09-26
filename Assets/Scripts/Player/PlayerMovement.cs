@@ -78,11 +78,11 @@ namespace Game
 			charController.Move(moveVector * Time.deltaTime);
 		}
 
-		/// Adjusts the vertical velocity of the player if on a slope to avoid bouncing.
+		// Adjusts the vertical velocity of the player if on a slope to avoid bouncing.
 		private Vector3 AdjustVerticalVelocityOnSlope(Vector3 velocity)
 		{
 			RaycastHit rayHit;
-			if (Physics.Raycast(transform.position, Vector3.down, out rayHit, 5f, groundLayer))
+			if (Physics.Raycast(transform.position, Vector3.down, out rayHit, 3f, groundLayer))
 			{
 				Quaternion slopeRotation = Quaternion.FromToRotation(Vector3.up, rayHit.normal);
 				Vector3 adjustedVelocity = slopeRotation * velocity;
