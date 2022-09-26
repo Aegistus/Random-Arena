@@ -21,9 +21,9 @@ namespace Game
 			transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
 		}
 
-		void OnCollisionEnter(Collision collision)
+		void OnTriggerEnter(Collider other)
 		{
-			Health otherHealth = collision.collider.GetComponentInParent<Health>();
+			Health otherHealth = other.GetComponentInParent<Health>();
 			if (otherHealth != null)
 			{
 				otherHealth.Damage(new AttackData(owner, damage));
