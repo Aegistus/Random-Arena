@@ -290,6 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7200404083771477671}
   - component: {fileID: 7200404083771477670}
+  - component: {fileID: 9178941830809412208}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -304,7 +305,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7200404083771477672}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.49, y: -0.28, z: 0.713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -325,6 +326,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunTip: {fileID: 7200404082731738167}
+--- !u!95 &9178941830809412208
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7200404083771477672}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ccb737b08a38b1b42acafe77f9053296, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7201104438898623140
 GameObject:
   m_ObjectHideFlags: 0

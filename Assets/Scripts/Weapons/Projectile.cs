@@ -21,7 +21,6 @@ namespace Game
 			{
 				otherHealth.Damage(damage);
 			}
-			//gameObject.SetActive(false);
 		}
 	}
 }
