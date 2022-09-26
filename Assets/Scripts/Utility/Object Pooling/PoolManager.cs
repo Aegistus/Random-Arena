@@ -53,7 +53,7 @@ public class PoolManager : MonoBehaviour
 
     public enum PoolTag
     {
-        Blood, Spark
+        Bullet
     }
 
     PoolObject objectFromPool;
