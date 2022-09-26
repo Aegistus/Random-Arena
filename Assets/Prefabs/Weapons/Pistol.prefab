@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab7427a2f9b70a449818022fda7fdd03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Revolver
   gunTip: {fileID: 7200404082731738167}
 --- !u!95 &9178941830809412208
 Animator:

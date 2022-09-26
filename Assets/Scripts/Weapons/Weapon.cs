@@ -6,6 +6,8 @@ namespace Game
 {
 	public abstract class Weapon : MonoBehaviour
 	{
+		public string weaponName;
+
 	    public abstract void StartAttack(GameObject attacker);
 
 		public abstract void EndAttack();

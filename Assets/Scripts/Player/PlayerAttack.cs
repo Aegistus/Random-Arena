@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace Game
 {
 	public class PlayerAttack : MonoBehaviour
 	{
 	    public Weapon currentWeapon;
+
+		public event Action<Weapon> OnWeaponChange;
+
+		void Start()
+		{
+			OnWeaponChange?.Invoke(currentWeapon);
+		}
 
 		void Update()
 		{

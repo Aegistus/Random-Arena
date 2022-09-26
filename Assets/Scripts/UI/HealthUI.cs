@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace Game
 {
 	public class HealthUI : MonoBehaviour
 	{
-	    [SerializeField] Text healthValue;
+	    [SerializeField] TMP_Text healthValue;
 		[SerializeField] RectTransform healthBar;
 
 		PlayerHealth health;

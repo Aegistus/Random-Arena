@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b841b291c62a44ba9f109ea646b349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Bad Axe
   damage: 20
 --- !u!95 &384452080569384767
 Animator:
