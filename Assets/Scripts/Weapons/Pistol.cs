@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
-	public class Pistol : Weapon
+	public class Pistol : Gun
 	{
 		public Transform gunTip;
 		public float resetTime = .2f;
@@ -22,12 +22,13 @@ namespace Game
 		
 		public override void StartAttack(GameObject owner)
 		{
-			if (readyToFire)
+			if (readyToFire && AmmoLoaded)
 			{
 				GameObject bullet = pool.GetObjectOfTypeFromPool(PoolManager.PoolTag.Bullet, gunTip.position, gunTip.rotation);
 				bullet.GetComponent<Projectile>().SetOwner(owner);
 				anim.Play("Shoot");
 				readyToFire = false;
+				currentClipAmmo--;
 				StartCoroutine(ShotReset());
 			}
 		}

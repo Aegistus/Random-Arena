@@ -30,6 +30,11 @@ namespace Game
 			{
 				SecondaryAttack();
 			}
+			if (Input.GetKeyDown(KeyCode.R) && currentWeapon is Gun)
+			{
+				Gun gun = (Gun) currentWeapon;
+				gun.Reload();
+			}
 		}
 
 		void StartAttack()
