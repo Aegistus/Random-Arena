@@ -12,6 +12,8 @@ namespace Game
 
 		public abstract void EndAttack();
 
+		public abstract void SecondaryAttack(GameObject attacker);
+
 	}
 }
 

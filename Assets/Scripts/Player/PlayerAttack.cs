@@ -26,6 +26,10 @@ namespace Game
 			{
 				EndAttack();
 			}
+			if (Input.GetMouseButtonDown(1))
+			{
+				SecondaryAttack();
+			}
 		}
 
 		void StartAttack()
@@ -36,6 +40,11 @@ namespace Game
 		void EndAttack()
 		{
 			currentWeapon.EndAttack();
+		}
+
+		void SecondaryAttack()
+		{
+			currentWeapon.SecondaryAttack(gameObject);
 		}
 	}
 }

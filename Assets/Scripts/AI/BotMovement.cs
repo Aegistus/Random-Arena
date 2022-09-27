@@ -23,7 +23,7 @@ namespace Game
 
 		void Update()
 		{
-			if (Vector3.Distance(transform.position, navAgent.destination) < stoppingDistance)
+			if (Vector3.Distance(transform.position, navAgent.destination) <= stoppingDistance)
 			{
 				navAgent.SetDestination(transform.position);
 			}

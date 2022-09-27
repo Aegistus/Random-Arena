@@ -42,6 +42,8 @@ namespace Game
 		{
 
 		}
+
+		public override void SecondaryAttack(GameObject owner) {}
 	}
 }
 
