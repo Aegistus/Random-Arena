@@ -91,7 +91,7 @@ namespace Game
 		void OnTriggerEnter(Collider other)
 		{
 			//print("Trigger entered");
-			if (attacking)
+			if (attacking || beingThrown)
 			{
 				Health health = other.GetComponentInParent<Health>();
 				if (health != null)

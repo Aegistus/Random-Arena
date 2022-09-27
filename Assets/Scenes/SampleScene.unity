@@ -2120,7 +2120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &842470772
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4139,7 +4139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1505610125
 Transform:
   m_ObjectHideFlags: 0
@@ -4373,6 +4373,7 @@ MonoBehaviour:
   crosshair: {fileID: 1527568500}
   distanceIndicator: {fileID: 323354386}
   movementSmooth: 5
+  crosshairEnabled: 1
 --- !u!1001 &1530791106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4722,7 +4723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &1772878204
 NavMeshAgent:
   m_ObjectHideFlags: 0
