@@ -328,7 +328,7 @@ MonoBehaviour:
   weaponName: Revolver
   maxClipAmmo: 6
   maxCarriedAmmo: 20
-  reloadTime: 3
+  reloadTime: 2
   gunTip: {fileID: 7200404082731738167}
   resetTime: 0.2
 --- !u!95 &9178941830809412208
