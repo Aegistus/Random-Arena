@@ -2263,7 +2263,15 @@ PrefabInstance:
       value: 750
       objectReference: {fileID: 0}
     - target: {fileID: 384452080569384766, guid: b641aaa02265dcf439553773ec75970a, type: 3}
+      propertyPath: returnTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 384452080569384766, guid: b641aaa02265dcf439553773ec75970a, type: 3}
       propertyPath: throwSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 384452080569384766, guid: b641aaa02265dcf439553773ec75970a, type: 3}
+      propertyPath: returnSpeed
       value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []

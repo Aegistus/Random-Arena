@@ -13,6 +13,7 @@ namespace Game
 		[SerializeField] float spinSpeed = 100f;
 		[SerializeField] float throwSpeed = 20f;
 		[SerializeField] float returnTime = 5f;
+		[SerializeField] float returnSpeed = 5f;
 
 		Animator anim;
 		bool attacking = false;
@@ -65,13 +66,24 @@ namespace Game
 			beingThrown = true;
 			this.owner = owner;
 			transform.SetParent(null, true);
-			StartCoroutine(ReturnToOwner());
+			StartCoroutine(ReturnTimer());
 			anim.enabled = false;
 		}
 
-		IEnumerator ReturnToOwner()
+		IEnumerator ReturnTimer()
 		{
 			yield return new WaitForSeconds(returnTime);
+			beingThrown = false;
+			while (Vector3.Distance(transform.position, owner.transform.position) >= .5f)
+			{
+				transform.position = Vector3.Lerp(transform.position, owner.transform.position, returnSpeed * Time.deltaTime);
+				yield return null;
+			}
+			ResetAxe();
+		}
+
+		void ResetAxe()
+		{
 			beingThrown = false;
 			transform.parent = originalParent;
 			transform.localPosition = originalLocalPosition;
