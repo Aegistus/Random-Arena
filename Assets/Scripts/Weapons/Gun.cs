@@ -8,19 +8,23 @@ namespace Game
 	{
 		[SerializeField] protected int maxClipAmmo;
 	    [SerializeField] protected int maxCarriedAmmo;
+		[SerializeField] protected float reloadTime = 1f;
 
 		public bool AmmoLoaded => currentClipAmmo > 0;
 		protected int currentClipAmmo;
 		protected int currentCarriedAmmo;
+		protected bool readyToFire = true;
 
 		protected virtual void Awake()
 		{
-			currentCarriedAmmo = maxClipAmmo;
+			currentClipAmmo = maxClipAmmo;
 			currentCarriedAmmo = maxCarriedAmmo;
 		}
 
-		public void Reload()
+		public IEnumerator Reload()
 		{
+			readyToFire = false;
+			yield return new WaitForSeconds(reloadTime);
 			if (currentCarriedAmmo > 0 && currentClipAmmo < maxClipAmmo)
 			{
 				int refillAmount = maxClipAmmo - currentClipAmmo;
@@ -35,6 +39,7 @@ namespace Game
 					currentCarriedAmmo = 0;
 				}
 			}
+			readyToFire = true;
 		}
 	}
 }

@@ -274,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7200404082731738168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.129, z: 0.626}
+  m_LocalPosition: {x: 0, y: 0.129, z: 0.747}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7204914016556662850}
@@ -326,7 +326,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Revolver
+  maxClipAmmo: 6
+  maxCarriedAmmo: 20
+  reloadTime: 3
   gunTip: {fileID: 7200404082731738167}
+  resetTime: 0.2
 --- !u!95 &9178941830809412208
 Animator:
   serializedVersion: 3

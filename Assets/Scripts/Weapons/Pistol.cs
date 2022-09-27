@@ -9,7 +9,6 @@ namespace Game
 		public Transform gunTip;
 		public float resetTime = .2f;
 
-		bool readyToFire = true;
 		PoolManager pool;
 		Animator anim;
 

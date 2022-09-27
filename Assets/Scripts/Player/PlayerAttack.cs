@@ -33,7 +33,7 @@ namespace Game
 			if (Input.GetKeyDown(KeyCode.R) && currentWeapon is Gun)
 			{
 				Gun gun = (Gun) currentWeapon;
-				gun.Reload();
+				StartCoroutine(gun.Reload());
 			}
 		}
 

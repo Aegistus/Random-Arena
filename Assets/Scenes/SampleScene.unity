@@ -2211,10 +2211,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bad Axe
       objectReference: {fileID: 0}
-    - target: {fileID: 384452080569384764, guid: b641aaa02265dcf439553773ec75970a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 384452080569384765, guid: b641aaa02265dcf439553773ec75970a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5950,18 +5946,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 963194228}
     m_Modifications:
-    - target: {fileID: 7200404082731738167, guid: 33bf1edce9a4fc3479e66acf9e8087d1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.747
-      objectReference: {fileID: 0}
-    - target: {fileID: 7200404083771477670, guid: 33bf1edce9a4fc3479e66acf9e8087d1, type: 3}
-      propertyPath: maxClipAmmo
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7200404083771477670, guid: 33bf1edce9a4fc3479e66acf9e8087d1, type: 3}
-      propertyPath: maxCarriedAmmo
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 7200404083771477671, guid: 33bf1edce9a4fc3479e66acf9e8087d1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6009,10 +5993,6 @@ PrefabInstance:
     - target: {fileID: 7200404083771477672, guid: 33bf1edce9a4fc3479e66acf9e8087d1, type: 3}
       propertyPath: m_Name
       value: Pistol
-      objectReference: {fileID: 0}
-    - target: {fileID: 7200404083771477672, guid: 33bf1edce9a4fc3479e66acf9e8087d1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33bf1edce9a4fc3479e66acf9e8087d1, type: 3}
