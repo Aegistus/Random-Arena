@@ -12,6 +12,8 @@ namespace Game
 		[SerializeField] protected float reloadTime = 1f;
 
 		public bool AmmoLoaded => currentClipAmmo > 0;
+		public int CurrentAmmo => currentClipAmmo;
+		public int CarriedAmmo => currentCarriedAmmo;
 		protected int currentClipAmmo;
 		protected int currentCarriedAmmo;
 		protected bool readyToFire = true;
@@ -26,24 +28,25 @@ namespace Game
 
 		public IEnumerator Reload()
 		{
-			readyToFire = false;
-			anim.Play("Reload");
-			yield return new WaitForSeconds(reloadTime);
 			if (currentCarriedAmmo > 0 && currentClipAmmo < maxClipAmmo)
 			{
-				int refillAmount = maxClipAmmo - currentClipAmmo;
-				if (currentCarriedAmmo >= refillAmount)
-				{
-					currentCarriedAmmo -= refillAmount;
-					currentClipAmmo += refillAmount;
-				}
-				else
-				{
-					currentClipAmmo += currentCarriedAmmo;
-					currentCarriedAmmo = 0;
-				}
+				readyToFire = false;
+				anim.Play("Reload");
+				yield return new WaitForSeconds(reloadTime);
+
+					int refillAmount = maxClipAmmo - currentClipAmmo;
+					if (currentCarriedAmmo >= refillAmount)
+					{
+						currentCarriedAmmo -= refillAmount;
+						currentClipAmmo += refillAmount;
+					}
+					else
+					{
+						currentClipAmmo += currentCarriedAmmo;
+						currentCarriedAmmo = 0;
+					}
+				readyToFire = true;
 			}
-			readyToFire = true;
 		}
 	}
 }
