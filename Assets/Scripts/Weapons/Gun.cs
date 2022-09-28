@@ -48,6 +48,15 @@ namespace Game
 				readyToFire = true;
 			}
 		}
+
+		public void AddAmmo(int amount)
+		{
+			currentCarriedAmmo += amount;
+			if (currentCarriedAmmo > maxCarriedAmmo)
+			{
+				currentCarriedAmmo = maxCarriedAmmo;
+			}
+		}
 	}
 }
 
