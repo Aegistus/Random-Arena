@@ -13,7 +13,9 @@ namespace Game
 		[SerializeField] protected float startingHealth = 100f;
 	    [SerializeField] protected float maxHealth = 100f;
 
-		[HideInInspector] public float currentHealth;
+		public float MaxHealth => maxHealth;
+		public float CurrentHealth => currentHealth;
+		float currentHealth;
 
 		protected virtual void Awake()
 		{
