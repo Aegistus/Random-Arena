@@ -6,6 +6,7 @@ namespace Game
 {
 	public abstract class Gun : Weapon
 	{
+		[SerializeField] protected Transform gunTip;
 		[SerializeField] protected int maxClipAmmo;
 	    [SerializeField] protected int maxCarriedAmmo;
 		[SerializeField] protected float reloadTime = 1f;

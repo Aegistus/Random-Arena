@@ -6,7 +6,6 @@ namespace Game
 {
 	public class Pistol : Gun
 	{
-		public Transform gunTip;
 		public float resetTime = .2f;
 
 		PoolManager pool;
