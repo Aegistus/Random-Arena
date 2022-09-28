@@ -7,6 +7,7 @@ namespace Game
 	public abstract class Weapon : MonoBehaviour
 	{
 		public string weaponName;
+		[SerializeField] protected float damage = 10f;
 
 	    public abstract void StartAttack(GameObject attacker);
 

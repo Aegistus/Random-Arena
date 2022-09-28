@@ -13,6 +13,10 @@ namespace Game
 
 		void Start()
 		{
+			if (currentWeapon == null)
+			{
+				currentWeapon = GetComponentInChildren<Weapon>();
+			}
 			OnWeaponChange?.Invoke(currentWeapon);
 		}
 
