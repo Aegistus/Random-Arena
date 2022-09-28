@@ -14,16 +14,19 @@ namespace Game
 		protected int currentClipAmmo;
 		protected int currentCarriedAmmo;
 		protected bool readyToFire = true;
+		protected Animator anim;
 
 		protected virtual void Awake()
 		{
 			currentClipAmmo = maxClipAmmo;
 			currentCarriedAmmo = maxCarriedAmmo;
+			anim = GetComponent<Animator>();
 		}
 
 		public IEnumerator Reload()
 		{
 			readyToFire = false;
+			anim.Play("Reload");
 			yield return new WaitForSeconds(reloadTime);
 			if (currentCarriedAmmo > 0 && currentClipAmmo < maxClipAmmo)
 			{

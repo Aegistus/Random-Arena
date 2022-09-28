@@ -10,12 +10,10 @@ namespace Game
 		public float resetTime = .2f;
 
 		PoolManager pool;
-		Animator anim;
 
 		void Start()
 		{
 			pool = PoolManager.Instance;
-			anim = GetComponent<Animator>();
 		}
 
 		
