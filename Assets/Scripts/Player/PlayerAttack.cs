@@ -5,21 +5,8 @@ using System;
 
 namespace Game
 {
-	public class PlayerAttack : MonoBehaviour
+	public class PlayerAttack : Attack
 	{
-	    public Weapon currentWeapon;
-
-		public event Action<Weapon> OnWeaponChange;
-
-		void Start()
-		{
-			if (currentWeapon == null)
-			{
-				currentWeapon = GetComponentInChildren<Weapon>();
-			}
-			OnWeaponChange?.Invoke(currentWeapon);
-		}
-
 		void Update()
 		{
 			if (Input.GetMouseButtonDown(0))
@@ -34,27 +21,13 @@ namespace Game
 			{
 				SecondaryAttack();
 			}
-			if (Input.GetKeyDown(KeyCode.R) && currentWeapon is Gun)
+			if (Input.GetKeyDown(KeyCode.R) && CurrentWeapon is Gun)
 			{
-				Gun gun = (Gun) currentWeapon;
+				Gun gun = (Gun) CurrentWeapon;
 				StartCoroutine(gun.Reload());
 			}
 		}
 
-		void StartAttack()
-		{
-			currentWeapon.StartAttack(gameObject);
-		}
-
-		void EndAttack()
-		{
-			currentWeapon.EndAttack();
-		}
-
-		void SecondaryAttack()
-		{
-			currentWeapon.SecondaryAttack(gameObject);
-		}
 	}
 }
 

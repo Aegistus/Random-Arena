@@ -9,7 +9,7 @@ namespace Game
 		[SerializeField] int amountOfAmmoRestored = 20;
 	    public override void Activate(GameObject player)
 		{
-			Weapon playerWeapon = player.GetComponentInParent<PlayerAttack>().currentWeapon;
+			Weapon playerWeapon = player.GetComponentInParent<PlayerAttack>().CurrentWeapon;
 			if (playerWeapon is Gun)
 			{
 				((Gun)playerWeapon).AddAmmo(amountOfAmmoRestored);

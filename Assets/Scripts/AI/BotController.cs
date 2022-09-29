@@ -7,6 +7,7 @@ namespace Game
 	public class BotController : MonoBehaviour
 	{
 		[SerializeField] float updateInterval = .2f;
+		[SerializeField] float attackRange = 1f;
 
 	    protected BotMovement movement;
 		protected GameObject target;
@@ -25,6 +26,18 @@ namespace Game
 			{
 				yield return new WaitForSeconds(updateInterval);
 				movement.SetDestination(target.transform.position);
+			}
+		}
+
+		IEnumerator CheckForAttack()
+		{
+			while (true)
+			{
+				yield return new WaitForSeconds(updateInterval);
+				if (Vector3.Distance(transform.position, target.transform.position) < attackRange)
+				{
+					
+				}
 			}
 		}
 	}

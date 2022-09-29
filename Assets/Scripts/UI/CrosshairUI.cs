@@ -39,15 +39,15 @@ namespace Game
 		
 		void Update()
 		{
-			if (playerAttack.currentWeapon != null && crosshairEnabled)
+			if (playerAttack.CurrentWeapon != null && crosshairEnabled)
 			{
-				if (Physics.Raycast(playerAttack.currentWeapon.transform.position, playerAttack.currentWeapon.transform.forward, out rayHit, 100f))
+				if (Physics.Raycast(playerAttack.CurrentWeapon.transform.position, playerAttack.CurrentWeapon.transform.forward, out rayHit, 100f))
 				{
 					crosshair.position = Vector3.Lerp(crosshair.position, mainCamera.WorldToScreenPoint(rayHit.point), movementSmooth * Time.deltaTime);
 				}
 				else 
 				{
-					crosshair.position = Vector3.Lerp(crosshair.position, mainCamera.WorldToScreenPoint(playerAttack.currentWeapon.transform.forward * 100), movementSmooth * Time.deltaTime);
+					crosshair.position = Vector3.Lerp(crosshair.position, mainCamera.WorldToScreenPoint(playerAttack.CurrentWeapon.transform.forward * 100), movementSmooth * Time.deltaTime);
 				}
 			}
 			distanceIndicator.text = ((int)Vector3.Distance(playerAttack.transform.position, rayHit.point)) + "m";
