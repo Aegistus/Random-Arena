@@ -17,7 +17,7 @@ namespace Game
 		public float CurrentHealth => currentHealth;
 		float currentHealth;
 
-		protected virtual void Awake()
+		protected virtual void Start()
 		{
 			currentHealth = startingHealth;
 			OnHealthChange?.Invoke(currentHealth, maxHealth);
@@ -26,6 +26,7 @@ namespace Game
 		public virtual void Damage(AttackData data)
 		{
 			// prevents attacking self.
+			print(data.damage);
 			if (data.owner == gameObject)
 			{
 				return;

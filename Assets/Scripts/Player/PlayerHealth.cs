@@ -6,6 +6,16 @@ namespace Game
 {
 	public class PlayerHealth : Health
 	{
+		[SerializeField] float fallDamage = 10f;
+		[SerializeField] float fallDamageThreshold = 10f;
+		CharacterController controller;
+		float lastYVelocity = 0;
+
+		void Awake()
+		{
+			controller = GetComponent<CharacterController>();
+		}
+
 	    public override void Damage(AttackData data)
 		{
 			data.damage *= Globals.playerDamageTakenMod;
@@ -17,6 +27,18 @@ namespace Game
 		{
 			base.Heal(heal * Globals.playerHealTakenMod);
 			SoundManager.instance.PlaySoundAtPosition("Heal", transform.position);
+		}
+
+		void FixedUpdate()
+		{
+			float acceleration = controller.velocity.y - lastYVelocity;
+			//print(acceleration);
+			if (acceleration > fallDamageThreshold)
+			{
+				float damage = (int)(acceleration - fallDamageThreshold) * fallDamage;
+				Damage(new AttackData(null, damage * Globals.playerFallDamageMod));
+			}
+			lastYVelocity = controller.velocity.y;
 		}
 	}
 }
