@@ -33,7 +33,7 @@ namespace Game
 		{
 			float acceleration = controller.velocity.y - lastYVelocity;
 			//print(acceleration);
-			if (acceleration > fallDamageThreshold)
+			if (acceleration > fallDamageThreshold && lastYVelocity < 0)
 			{
 				float damage = (int)(acceleration - fallDamageThreshold) * fallDamage;
 				Damage(new AttackData(null, damage * Globals.playerFallDamageMod));

@@ -36,7 +36,7 @@ namespace Game
 
 	    public override void StartAttack(GameObject owner)
 		{
-			if (beingThrown)
+			if (beingThrown || attacking)
 			{
 				return;
 			}
@@ -60,7 +60,7 @@ namespace Game
 
 		public override void SecondaryAttack(GameObject owner)
 		{
-			if (attacking)
+			if (attacking || beingThrown)
 			{
 				return;
 			}

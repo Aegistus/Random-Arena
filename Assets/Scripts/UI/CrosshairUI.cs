@@ -10,6 +10,7 @@ namespace Game
 		public RectTransform crosshair;
 		public TMP_Text distanceIndicator;
 		public float movementSmooth = 5f;
+		public float rangeFinderUpdateInterval = .5f;
 		public bool crosshairEnabled = true;
 
 		RaycastHit rayHit;
@@ -21,6 +22,7 @@ namespace Game
 			playerAttack = FindObjectOfType<PlayerAttack>();
 			playerAttack.OnWeaponChange += UpdateWeapon;
 			mainCamera = Camera.main;
+			StartCoroutine(UpdateRangeFinder());
 		}
 
 		void UpdateWeapon(Weapon weapon)
@@ -50,7 +52,15 @@ namespace Game
 					crosshair.position = Vector3.Lerp(crosshair.position, mainCamera.WorldToScreenPoint(playerAttack.CurrentWeapon.transform.forward * 100), movementSmooth * Time.deltaTime);
 				}
 			}
-			distanceIndicator.text = ((int)Vector3.Distance(playerAttack.transform.position, rayHit.point)) + "m";
+		}
+
+		IEnumerator UpdateRangeFinder()
+		{
+			while (true)
+			{
+				distanceIndicator.text = ((int)Vector3.Distance(playerAttack.transform.position, rayHit.point)) + "m";
+				yield return new WaitForSeconds(rangeFinderUpdateInterval);
+			}
 		}
 	}
 }
