@@ -26,17 +26,17 @@ namespace Game
 			OnWeaponChange?.Invoke(currentWeapon);
 		}
 	    
-		public void StartAttack()
+		public virtual void StartAttack()
 		{
 			currentWeapon.StartAttack(gameObject);
 		}
 
-		public void EndAttack()
+		public virtual void EndAttack()
 		{
 			currentWeapon.EndAttack();
 		}
 
-		public void SecondaryAttack()
+		public virtual void SecondaryAttack()
 		{
 			currentWeapon.SecondaryAttack(gameObject);
 		}
