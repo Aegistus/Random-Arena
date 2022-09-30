@@ -42,6 +42,7 @@ namespace Game
 			}
 			this.owner = owner;
 			anim.Play("Attack");
+			SoundManager.instance.PlaySoundAtPosition("Bad Axe Attack", transform.position);
 			attacking = true;
 			StartCoroutine(AttackTimer());
 		}
@@ -66,6 +67,7 @@ namespace Game
 			beingThrown = true;
 			this.owner = owner;
 			transform.SetParent(null, true);
+			SoundManager.instance.PlaySoundAtPosition("Bad Axe Throw", transform.position);
 			StartCoroutine(ReturnTimer());
 			anim.enabled = false;
 		}

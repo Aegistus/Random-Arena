@@ -17,6 +17,7 @@ namespace Game
 		{
 			if (AmmoLoaded)
 			{
+				SoundManager.instance.PlaySoundAtPosition("Laser Gun Shoot", transform.position);
 				currentlyFiring = true;
 				laserParticles.SetActive(true);
 				StartCoroutine(ShootLaser());

@@ -23,6 +23,7 @@ namespace Game
 				GameObject bullet = pool.GetObjectOfTypeFromPool(PoolManager.PoolTag.Bullet, gunTip.position, gunTip.rotation);
 				bullet.GetComponent<Projectile>().SetOwner(owner);
 				anim.Play("Shoot");
+				SoundManager.instance.PlaySoundAtPosition("Revolver Shot", transform.position);
 				readyToFire = false;
 				currentClipAmmo--;
 				StartCoroutine(ShotReset());

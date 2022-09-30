@@ -42,6 +42,7 @@ namespace Game
 				GameObject bullet = pool.GetObjectOfTypeFromPool(PoolManager.PoolTag.Bullet, gunTip.position, gunTip.rotation);
 				bullet.GetComponent<Projectile>().SetOwner(owner);
 				anim.Play("Shoot");
+				SoundManager.instance.PlaySoundAtPosition("Assault Rifle Shoot", transform.position);
 				readyToFire = false;
 				currentClipAmmo--;
 				currentClipAmmo--;

@@ -10,11 +10,13 @@ namespace Game
 		{
 			data.damage *= Globals.playerDamageTakenMod;
 			base.Damage(data);
+			SoundManager.instance.PlaySoundAtPosition("Player Impact", transform.position);
 		}
 
 		public override void Heal(float heal)
 		{
 			base.Heal(heal * Globals.playerHealTakenMod);
+			SoundManager.instance.PlaySoundAtPosition("Heal", transform.position);
 		}
 	}
 }
