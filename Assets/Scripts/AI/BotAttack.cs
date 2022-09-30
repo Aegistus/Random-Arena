@@ -9,9 +9,25 @@ namespace Game
 	    [SerializeField] float attackDelay = 1f;
 
 		bool canAttack = true;
+		bool reloading = false;
 
 		public override void StartAttack()
 		{
+			if (CurrentWeapon is Gun)
+			{
+				if (!((Gun)CurrentWeapon).AmmoLoaded)
+				{
+					if (reloading == false)
+					{
+						StartCoroutine(((Gun)CurrentWeapon).Reload());
+						reloading = true;
+					}
+				}
+				else
+				{
+					reloading = false;
+				}
+			}
 			if (canAttack)
 			{
 				base.StartAttack();
