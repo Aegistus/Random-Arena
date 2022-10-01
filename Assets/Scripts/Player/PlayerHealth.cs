@@ -29,6 +29,12 @@ namespace Game
 			SoundManager.instance.PlaySoundAtPosition("Heal", transform.position);
 		}
 
+		public override void Die()
+		{
+			GetComponent<PlayerMovement>().enabled = false;
+			GetComponent<PlayerAttack>().enabled = false;
+		}
+
 		void FixedUpdate()
 		{
 			float acceleration = controller.velocity.y - lastYVelocity;

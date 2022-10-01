@@ -42,13 +42,12 @@ namespace Game
 
 		void WinGame()
 		{
-			print("You win!!");
 			OnGameWin?.Invoke();
 		}
 
 		void LoseGame()
 		{
-
+			OnGameLose?.Invoke();
 		}
 	}
 }
