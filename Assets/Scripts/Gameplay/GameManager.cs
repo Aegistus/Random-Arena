@@ -20,7 +20,7 @@ namespace Game
 			{
 				allBots.Add(bot.gameObject);
 			}
-			currentObjective = new KillAllEnemiesObjective(allBots);
+			currentObjective = new DeathmatchObjective(allBots);
 		}
 
 		void Update()
