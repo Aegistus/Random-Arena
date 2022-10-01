@@ -26,7 +26,6 @@ namespace Game
 		public virtual void Damage(AttackData data)
 		{
 			// prevents attacking self.
-			print(data.damage);
 			if (data.owner == gameObject)
 			{
 				return;
