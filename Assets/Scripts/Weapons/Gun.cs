@@ -11,6 +11,7 @@ namespace Game
 	    [SerializeField] protected int maxCarriedAmmo;
 		[SerializeField] protected float reloadTime = 1f;
 
+		public Transform GunTip => gunTip;
 		public bool AmmoLoaded => currentClipAmmo > 0;
 		public int CurrentAmmo => currentClipAmmo;
 		public int CarriedAmmo => currentCarriedAmmo;

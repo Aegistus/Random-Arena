@@ -10,7 +10,7 @@ namespace Game
 		public RectTransform crosshair;
 		public TMP_Text distanceIndicator;
 		public float movementSmooth = 5f;
-		public float rangeFinderUpdateInterval = .5f;
+		public float rangeFinderUpdateInterval = .2f;
 		public bool crosshairEnabled = true;
 
 		RaycastHit rayHit;
@@ -43,13 +43,14 @@ namespace Game
 		{
 			if (playerAttack.CurrentWeapon != null && crosshairEnabled)
 			{
-				if (Physics.Raycast(playerAttack.CurrentWeapon.transform.position, playerAttack.CurrentWeapon.transform.forward, out rayHit, 100f))
+				Gun gun = (Gun)playerAttack.CurrentWeapon;
+				if (Physics.Raycast(gun.GunTip.position, gun.GunTip.forward, out rayHit, 100f))
 				{
 					crosshair.position = Vector3.Lerp(crosshair.position, mainCamera.WorldToScreenPoint(rayHit.point), movementSmooth * Time.deltaTime);
 				}
-				else 
+				else
 				{
-					crosshair.position = Vector3.Lerp(crosshair.position, mainCamera.WorldToScreenPoint(playerAttack.CurrentWeapon.transform.forward * 100), movementSmooth * Time.deltaTime);
+					crosshair.position = Vector3.Lerp(crosshair.position, mainCamera.WorldToScreenPoint(gun.GunTip.forward * 100), movementSmooth * Time.deltaTime);
 				}
 			}
 		}

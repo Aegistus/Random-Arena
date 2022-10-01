@@ -13,6 +13,7 @@ namespace Game
 			if (playerWeapon is Gun)
 			{
 				((Gun)playerWeapon).AddAmmo(amountOfAmmoRestored);
+				SoundManager.instance.PlaySoundAtPosition("Ammo Pickup", transform.position);
 				Destroy(gameObject);
 			}
 		}
