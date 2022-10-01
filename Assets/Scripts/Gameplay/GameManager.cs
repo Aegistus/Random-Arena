@@ -11,8 +11,10 @@ namespace Game
 		public static event Action OnGameLose;
 
 	    Objective[] objectivePool;
+		Rule[] rulePool;
 
 		Objective currentObjective;
+		List<Rule> currentRules = new List<Rule>();
 		bool checkingObjective = true;
 
 		void Awake()
@@ -24,6 +26,7 @@ namespace Game
 				allBots.Add(bot.gameObject);
 			}
 			currentObjective = new DeathmatchObjective(allBots);
+			currentRules.Add(new OnePlayerLifeRule());
 		}
 
 		void Update()
@@ -33,11 +36,18 @@ namespace Game
 				checkingObjective = false;
 				WinGame();
 			}
-			if (checkingObjective && currentObjective.Failed())
+			if (checkingObjective)
 			{
-				checkingObjective = false;
-				LoseGame();
+				for (int i = 0; i < currentRules.Count; i++)
+				{
+					if (currentRules[i].Broken())
+					{
+						checkingObjective = false;
+						LoseGame();
+					}
+				}
 			}
+
 		}
 
 		void WinGame()

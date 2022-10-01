@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace Game
 {
-	public abstract class Objective
+	public abstract class Rule
 	{
-	    public abstract bool Completed();
-
-		public abstract bool Failed();
+	    public abstract bool Broken();
 	}
 }
 

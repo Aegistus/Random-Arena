@@ -33,6 +33,7 @@ namespace Game
 		{
 			GetComponent<PlayerMovement>().enabled = false;
 			GetComponent<PlayerAttack>().enabled = false;
+			base.Die();
 		}
 
 		void FixedUpdate()

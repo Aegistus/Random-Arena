@@ -9,6 +9,7 @@ namespace Game
 	{
 		/// Parameters: currentHealth, maxHealth
 		public event Action<float, float> OnHealthChange;
+		public event Action OnDeath;
 
 		[SerializeField] protected float startingHealth = 100f;
 	    [SerializeField] protected float maxHealth = 100f;
@@ -51,7 +52,7 @@ namespace Game
 
 		public virtual void Die()
 		{
-			gameObject.SetActive(false);
+			OnDeath?.Invoke();
 		}
 	}
 }
