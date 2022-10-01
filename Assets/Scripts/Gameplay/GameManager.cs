@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+using System;
 
 namespace Game
 {
 	public class GameManager : MonoBehaviour
 	{
+		public static event Action OnGameWin;
+		public static event Action OnGameLose;
+
 	    Objective[] objectivePool;
 
 		Objective currentObjective;
@@ -40,6 +43,7 @@ namespace Game
 		void WinGame()
 		{
 			print("You win!!");
+			OnGameWin?.Invoke();
 		}
 
 		void LoseGame()
