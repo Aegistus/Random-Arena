@@ -21,7 +21,7 @@ namespace Game
 		{
 			//currentObjective = new DeathmatchObjective();
 			//currentRules.Add(new OnePlayerLifeRule());
-			currentObjective = new RaceObjective();
+			currentObjective = new TreasureHuntObjective();
 			currentObjective.Setup();
 		}
 
