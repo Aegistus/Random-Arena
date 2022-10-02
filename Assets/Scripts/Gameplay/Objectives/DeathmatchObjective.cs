@@ -1,28 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Game
 {
 	public class DeathmatchObjective : Objective
 	{
-		List<GameObject> allBots = new List<GameObject>();
+		List<BotHealth> allBots = new List<BotHealth>();
+		bool finishedSpawning = false;
 
-		public DeathmatchObjective(List<GameObject> bots)
+		public DeathmatchObjective()
 		{
-			allBots = bots;
+			EnemySpawner.OnFinishedSpawning += FinishedSpawning;
+		}
+
+		public override void Setup()
+		{
+			EnemySpawner.GlobalSpawnEnemies(2, 5f);
 		}
 
 		public override bool Completed()
 		{
+			if (!finishedSpawning)
+			{
+				return false;
+			}
 			for (int i = 0; i < allBots.Count; i++)
 			{
-				if (allBots[i].activeInHierarchy)
+				if (allBots[i].CurrentHealth > 0)
 				{
 					return false;
 				}
 			}
 			return true;
+		}
+
+		void FinishedSpawning()
+		{
+			if (finishedSpawning == false)
+			{
+				finishedSpawning = true;
+				allBots = GameObject.FindObjectsOfType<BotHealth>().ToList();
+			}
 		}
 	}
 }

@@ -17,16 +17,11 @@ namespace Game
 		List<Rule> currentRules = new List<Rule>();
 		bool checkingObjective = true;
 
-		void Awake()
+		void Start()
 		{
-			BotController[] botControllers = FindObjectsOfType<BotController>();
-			List<GameObject> allBots = new List<GameObject>();
-			foreach (var bot in botControllers)
-			{
-				allBots.Add(bot.gameObject);
-			}
-			currentObjective = new DeathmatchObjective(allBots);
+			currentObjective = new DeathmatchObjective();
 			currentRules.Add(new OnePlayerLifeRule());
+			currentObjective.Setup();
 		}
 
 		void Update()
