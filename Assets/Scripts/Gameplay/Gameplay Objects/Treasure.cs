@@ -51,6 +51,7 @@ namespace Game
 			{
 				Collected = true;
 				model.SetActive(false);
+				SoundManager.instance.PlaySoundAtPosition("Task Complete", transform.position);
 				TreasuresRemaining--;
 			}
 		}
