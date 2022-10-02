@@ -10,6 +10,7 @@ namespace Game
 
 		public OnePlayerLifeRule()
 		{
+			Description = "One Life: The player gets only one life.";
 			GameObject.FindObjectOfType<PlayerHealth>().OnDeath += PlayerDied;
 		}
 

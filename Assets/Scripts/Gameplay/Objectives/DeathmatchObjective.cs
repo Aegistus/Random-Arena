@@ -12,6 +12,7 @@ namespace Game
 
 		public DeathmatchObjective()
 		{
+			Description = "Deathmatch: Destroy all bot enemies to win.";
 			EnemySpawner.OnFinishedSpawning += FinishedSpawning;
 		}
 

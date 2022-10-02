@@ -6,6 +6,11 @@ namespace Game
 {
 	public class RaceObjective : Objective
 	{
+		public RaceObjective()
+		{
+			Description = "Race: Go through all checkpoints to win.";
+		}
+
 		public override void Setup()
 		{
 			RaceCourse.GenerateRaceCourse();

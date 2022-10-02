@@ -7,6 +7,7 @@ namespace Game
 {
 	public class GameManager : MonoBehaviour
 	{
+		public static event Action<Objective, Rule> OnObjectiveDeclared;
 		public static event Action OnGameWin;
 		public static event Action OnGameLose;
 
@@ -14,7 +15,7 @@ namespace Game
 		Rule[] rulePool;
 
 		Objective currentObjective;
-		List<Rule> currentRules = new List<Rule>();
+		Rule currentRule;
 		bool checkingObjective = true;
 
 		void Start()
@@ -23,6 +24,7 @@ namespace Game
 			//currentRules.Add(new OnePlayerLifeRule());
 			currentObjective = new TreasureHuntObjective();
 			currentObjective.Setup();
+			OnObjectiveDeclared?.Invoke(currentObjective, currentRule);
 		}
 
 		void Update()
@@ -32,15 +34,17 @@ namespace Game
 				checkingObjective = false;
 				WinGame();
 			}
+			if (currentRule == null)
+			{
+				return;
+			}
 			if (checkingObjective)
 			{
-				for (int i = 0; i < currentRules.Count; i++)
+
+				if (currentRule.Broken())
 				{
-					if (currentRules[i].Broken())
-					{
-						checkingObjective = false;
-						LoseGame();
-					}
+					checkingObjective = false;
+					LoseGame();
 				}
 			}
 
