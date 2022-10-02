@@ -19,8 +19,9 @@ namespace Game
 
 		void Start()
 		{
-			currentObjective = new DeathmatchObjective();
-			currentRules.Add(new OnePlayerLifeRule());
+			//currentObjective = new DeathmatchObjective();
+			//currentRules.Add(new OnePlayerLifeRule());
+			currentObjective = new RaceObjective();
 			currentObjective.Setup();
 		}
 
