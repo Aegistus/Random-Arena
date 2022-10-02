@@ -23,6 +23,7 @@ namespace Game
 			{
 				Reached = true;
 				OnCheckpointReached?.Invoke(this);
+				SoundManager.instance.PlaySoundAtPosition("Task Complete", transform.position);
 				gameObject.SetActive(false);
 			}
 		}
