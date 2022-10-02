@@ -22,6 +22,13 @@ namespace Game
 
 		public void ChangeWeapon(Weapon newWeapon)
 		{
+			if (currentWeapon != null)
+			{
+				newWeapon.transform.SetParent(currentWeapon.transform.parent);
+				newWeapon.transform.position = currentWeapon.transform.position;
+				newWeapon.transform.rotation = currentWeapon.transform.rotation;
+				Destroy(currentWeapon.gameObject);
+			}
 			currentWeapon = newWeapon;
 			OnWeaponChange?.Invoke(currentWeapon);
 		}
