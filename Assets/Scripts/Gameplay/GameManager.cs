@@ -24,7 +24,7 @@ namespace Game
 			//currentRules.Add(new OnePlayerLifeRule());
 			currentObjective = new TreasureHuntObjective();
 			currentObjective.Setup();
-			currentRule = new TimerRule(5f);
+			currentRule = new TimerRule(120f);
 			OnObjectiveDeclared?.Invoke(currentObjective, currentRule);
 		}
 

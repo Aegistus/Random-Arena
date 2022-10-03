@@ -50,9 +50,9 @@ namespace Game
 			if (other.GetComponentInParent<PlayerHealth>())
 			{
 				Collected = true;
-				model.SetActive(false);
 				SoundManager.instance.PlaySoundAtPosition("Task Complete", transform.position);
 				TreasuresRemaining--;
+				Destroy(gameObject);
 			}
 		}
 

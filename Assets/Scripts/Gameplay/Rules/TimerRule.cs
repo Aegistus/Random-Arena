@@ -7,12 +7,13 @@ namespace Game
 {
 	public class TimerRule : Rule
 	{
-		float timerLength;
+		public float TimerLength { get; private set; }
 		bool timesUp = false;
 
 		public TimerRule(float timerLength)
 		{
 			Description = "Timer: Objective must be completed before time runs out.";
+			TimerLength = timerLength;
 			Timer.SetTimer(() => timesUp = true, timerLength);
 		}
 
