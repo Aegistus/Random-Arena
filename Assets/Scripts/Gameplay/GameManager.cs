@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random = UnityEngine.Random;
 
 namespace Game
 {
@@ -11,21 +12,41 @@ namespace Game
 		public static event Action OnGameWin;
 		public static event Action OnGameLose;
 
+		[SerializeField] float objectiveStartDelay = 3f;
+
 	    Objective[] objectivePool;
 		Rule[] rulePool;
 
 		Objective currentObjective;
 		Rule currentRule;
-		bool checkingObjective = true;
+		bool checkingObjective = false;
 
 		void Start()
 		{
-			//currentObjective = new DeathmatchObjective();
-			//currentRules.Add(new OnePlayerLifeRule());
-			currentObjective = new TreasureHuntObjective();
+			objectivePool = new Objective[]
+			{
+				new DeathmatchObjective(),
+				new TreasureHuntObjective(),
+				new RaceObjective()
+			};
+			rulePool = new Rule[]
+			{
+				new TimerRule(120f),
+				new OnePlayerLifeRule(),
+			};
+			StartCoroutine(DeclareRuleAndObjective());
+		}
+
+		IEnumerator DeclareRuleAndObjective()
+		{
+			yield return new WaitForSeconds(objectiveStartDelay);
+			currentObjective = objectivePool[Random.Range(0, objectivePool.Length)];
 			currentObjective.Setup();
-			currentRule = new TimerRule(120f);
+
+			currentRule = rulePool[Random.Range(0, rulePool.Length)];
+			currentRule.Activate();
 			OnObjectiveDeclared?.Invoke(currentObjective, currentRule);
+			checkingObjective = true;
 		}
 
 		void Update()
@@ -48,7 +69,6 @@ namespace Game
 					LoseGame();
 				}
 			}
-
 		}
 
 		void WinGame()

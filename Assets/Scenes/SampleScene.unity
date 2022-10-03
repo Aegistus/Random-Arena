@@ -3379,7 +3379,7 @@ GameObject:
   - component: {fileID: 991850265}
   - component: {fileID: 991850264}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Player UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6151,7 +6151,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Description
+  m_text: Choosing...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 188dc517ea9719d43a633cb0d4e64eaf, type: 2}
   m_sharedMaterial: {fileID: 934400341954122599, guid: 188dc517ea9719d43a633cb0d4e64eaf, type: 2}
@@ -8144,6 +8144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95fba297b82a48d40b6388759d3b27f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectiveStartDelay: 3
 --- !u!4 &2027804514
 Transform:
   m_ObjectHideFlags: 0
@@ -8318,7 +8319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Description
+  m_text: Choosing...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 188dc517ea9719d43a633cb0d4e64eaf, type: 2}
   m_sharedMaterial: {fileID: 934400341954122599, guid: 188dc517ea9719d43a633cb0d4e64eaf, type: 2}

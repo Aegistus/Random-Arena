@@ -14,7 +14,11 @@ namespace Game
 		{
 			Description = "Timer: Objective must be completed before time runs out.";
 			TimerLength = timerLength;
-			Timer.SetTimer(() => timesUp = true, timerLength);
+		}
+
+		public override void Activate()
+		{
+			Timer.SetTimer(() => timesUp = true, TimerLength);
 		}
 
 	    public override bool Broken()
