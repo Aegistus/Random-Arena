@@ -39,7 +39,7 @@ namespace Game
 			StartCoroutine(SpawnAfterDelay());
 		}
 
-		public IEnumerator SpawnAfterDelay()
+		IEnumerator SpawnAfterDelay()
 		{
 			while (respawns > 0)
 			{
@@ -51,6 +51,11 @@ namespace Game
 				yield return new WaitForSeconds(respawnDelay);
 			}
 			OnFinishedSpawning?.Invoke();
+		}
+
+		void OnDisable()
+		{
+			allSpawners.Remove(this);
 		}
 	}
 }
