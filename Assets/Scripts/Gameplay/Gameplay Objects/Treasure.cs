@@ -56,6 +56,10 @@ namespace Game
 			}
 		}
 
+		void OnDisable()
+		{
+			allTreasures.Remove(this);
+		}
 	}
 }
 
