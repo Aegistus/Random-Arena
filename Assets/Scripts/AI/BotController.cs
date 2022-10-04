@@ -13,6 +13,7 @@ namespace Game
 	    protected BotMovement movement;
 		protected BotAttack attack;
 		protected GameObject target;
+		bool attacking = false;
 
 		void Start()
 		{
@@ -26,10 +27,14 @@ namespace Game
 
 		IEnumerator UpdateTargetLocation()
 		{
+			WaitForSeconds waitForSeconds = new WaitForSeconds(updateInterval);
 			while (true)
 			{
-				yield return new WaitForSeconds(updateInterval);
-				movement.SetDestination(target.transform.position);
+				yield return waitForSeconds;
+				if (!attacking)
+				{
+					movement.SetDestination(target.transform.position);
+				}
 			}
 		}
 
@@ -40,7 +45,12 @@ namespace Game
 				yield return new WaitForSeconds(attackInterval);
 				if (Vector3.Distance(transform.position, target.transform.position) < attackRange)
 				{
+					attacking = true;
 					attack.StartAttack();
+				}
+				else
+				{
+					attacking = false;
 				}
 			}
 		}

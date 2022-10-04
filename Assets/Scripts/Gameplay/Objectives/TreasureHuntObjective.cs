@@ -16,7 +16,7 @@ namespace Game
 	    public override void Setup()
 		{
 			Treasure.ActivateTreasures(numOfTreasures);
-			EnemySpawner.GlobalSpawnEnemies(3, 30f);
+			EnemySpawner.GlobalSpawnEnemies(2, 30f);
 		}
 
 		public override bool Completed()

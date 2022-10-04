@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13caabf796c9aa04e9bcf87abb36d3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 50
-  maxHealth: 50
+  startingHealth: 25
+  maxHealth: 25
   hitParticles: {fileID: 532359194681155658}
   deathParticles: {fileID: 464333080481022159}
   botParts: []

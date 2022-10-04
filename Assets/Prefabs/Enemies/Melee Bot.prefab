@@ -4787,8 +4787,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13caabf796c9aa04e9bcf87abb36d3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 50
-  maxHealth: 50
+  startingHealth: 25
+  maxHealth: 25
   hitParticles: {fileID: 1303430168705556}
   deathParticles: {fileID: 5099836571307638109}
   botParts:
