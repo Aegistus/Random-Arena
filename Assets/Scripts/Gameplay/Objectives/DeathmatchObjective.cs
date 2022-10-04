@@ -45,6 +45,11 @@ namespace Game
 				allBots = GameObject.FindObjectsOfType<BotHealth>().ToList();
 			}
 		}
+
+		~DeathmatchObjective()
+		{
+			EnemySpawner.OnFinishedSpawning -= FinishedSpawning;
+		}
 	}
 }
 

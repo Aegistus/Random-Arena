@@ -18,7 +18,6 @@ namespace Game
 
 		public void SetDigit(int digit)
 		{
-			print(digit);
 			foreach (var d in digits)
 			{
 				d.SetActive(false);

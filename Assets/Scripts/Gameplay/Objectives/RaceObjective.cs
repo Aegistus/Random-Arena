@@ -14,6 +14,7 @@ namespace Game
 		public override void Setup()
 		{
 			RaceCourse.GenerateRaceCourse();
+			EnemySpawner.GlobalSpawnEnemies(5, 15f);
 		}
 
 		public override bool Completed()

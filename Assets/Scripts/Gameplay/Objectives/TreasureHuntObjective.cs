@@ -6,6 +6,8 @@ namespace Game
 {
 	public class TreasureHuntObjective : Objective
 	{
+		int numOfTreasures = 10;
+
 		public TreasureHuntObjective()
 		{
 			Description = "Treasure Hunt: Find and collect all gold skulls to win.";
@@ -13,7 +15,8 @@ namespace Game
 
 	    public override void Setup()
 		{
-			Treasure.ActivateTreasures(10);
+			Treasure.ActivateTreasures(numOfTreasures);
+			EnemySpawner.GlobalSpawnEnemies(5, 15f);
 		}
 
 		public override bool Completed()
