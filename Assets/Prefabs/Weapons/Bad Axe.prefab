@@ -133,9 +133,9 @@ MonoBehaviour:
   damage: 10
   meleeDamage: 20
   throwingDamage: 50
-  spinSpeed: 750
-  throwSpeed: 20
-  returnTime: 3
+  spinSpeed: 900
+  throwSpeed: 30
+  returnTime: 2
   returnSpeed: 20
 --- !u!95 &384452080569384767
 Animator:

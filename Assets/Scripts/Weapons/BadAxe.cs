@@ -24,14 +24,14 @@ namespace Game
 		bool beingThrown = false;
 		Vector3 originalLocalPosition;
 		Transform originalParent;
-		Quaternion originalRotation;
+		Quaternion originalChildRotation;
 
 		void Awake()
 		{
 			anim = GetComponent<Animator>();
 			originalLocalPosition = transform.localPosition;
 			originalParent = transform.parent;
-			originalRotation = transform.GetChild(0).localRotation;
+			originalChildRotation = transform.GetChild(0).localRotation;
 		}
 
 	    public override void StartAttack(GameObject owner)
@@ -89,7 +89,8 @@ namespace Game
 			beingThrown = false;
 			transform.parent = originalParent;
 			transform.localPosition = originalLocalPosition;
-			transform.GetChild(0).localRotation = originalRotation;
+			transform.localEulerAngles = Vector3.zero;
+			transform.GetChild(0).localRotation = originalChildRotation;
 			anim.enabled = true;
 		}
 

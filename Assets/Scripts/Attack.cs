@@ -7,6 +7,8 @@ namespace Game
 {
 	public abstract class Attack : MonoBehaviour
 	{
+		[SerializeField] Transform weaponHolder;
+
 		public Weapon CurrentWeapon => currentWeapon;
 		Weapon currentWeapon;
 
@@ -24,11 +26,11 @@ namespace Game
 		{
 			if (currentWeapon != null)
 			{
-				newWeapon.transform.SetParent(currentWeapon.transform.parent);
-				newWeapon.transform.position = currentWeapon.transform.position;
-				newWeapon.transform.rotation = currentWeapon.transform.rotation;
 				Destroy(currentWeapon.gameObject);
 			}
+			newWeapon.transform.SetParent(weaponHolder);
+			newWeapon.transform.localPosition = Vector3.zero;
+			newWeapon.transform.localEulerAngles = Vector3.zero;
 			currentWeapon = newWeapon;
 			OnWeaponChange?.Invoke(currentWeapon);
 		}
