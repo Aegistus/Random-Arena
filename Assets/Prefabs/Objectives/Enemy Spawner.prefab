@@ -9703,7 +9703,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444b45de12e58874e96b2fb0c29114cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2013993757007080878, guid: a4fd4a7e50b865342b364f81b3f41665, type: 3}
+  enemyPrefabs:
+  - {fileID: 2013993757007080878, guid: a4fd4a7e50b865342b364f81b3f41665, type: 3}
+  - {fileID: 3075695113112855081, guid: 44805ea39fd7d7e4aa14197ca437138f, type: 3}
   spawnPoint: {fileID: 781721658}
   particleEffects: {fileID: 540595490779075346}
   spawnDelay: 3

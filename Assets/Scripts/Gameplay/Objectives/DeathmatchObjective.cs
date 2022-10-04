@@ -18,7 +18,7 @@ namespace Game
 
 		public override void Setup()
 		{
-			EnemySpawner.GlobalSpawnEnemies(2, 5f);
+			EnemySpawner.GlobalSpawnEnemies(3, 30f);
 		}
 
 		public override bool Completed()

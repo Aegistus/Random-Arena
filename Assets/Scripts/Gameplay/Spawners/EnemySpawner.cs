@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random = UnityEngine.Random;
 
 namespace Game
 {
@@ -9,7 +10,7 @@ namespace Game
 	{
 		public static event Action OnFinishedSpawning;
 
-		[SerializeField] GameObject enemyPrefab;
+		[SerializeField] GameObject[] enemyPrefabs;
 		[SerializeField] Transform spawnPoint;
 		[SerializeField] GameObject particleEffects;
 		[SerializeField] float spawnDelay = 3f;
@@ -45,7 +46,7 @@ namespace Game
 			{
 				particleEffects.SetActive(true);
 				yield return new WaitForSeconds(spawnDelay);
-				Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+				Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPoint.position, spawnPoint.rotation);
 				particleEffects.SetActive(false);
 				respawns--;
 				yield return new WaitForSeconds(respawnDelay);
