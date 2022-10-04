@@ -58,6 +58,7 @@ namespace Game
 			{
 				moveVector += transform.right;
 			}
+			moveVector.Normalize();
 			
 			// if running
 			if (Input.GetKey(KeyCode.LeftShift) && playerGrounded)
