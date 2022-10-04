@@ -2930,6 +2930,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bad Axe
       objectReference: {fileID: 0}
+    - target: {fileID: 384452080569384764, guid: b641aaa02265dcf439553773ec75970a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 384452080569384765, guid: b641aaa02265dcf439553773ec75970a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9056,7 +9060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4010252536420819293, guid: 1b3ea9b85c18e5344a3391960675dd00, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4010252536420819294, guid: 1b3ea9b85c18e5344a3391960675dd00, type: 3}
       propertyPath: m_RootOrder

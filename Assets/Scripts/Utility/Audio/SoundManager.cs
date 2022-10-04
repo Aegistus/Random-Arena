@@ -102,6 +102,7 @@ public class SoundManager : MonoBehaviour
 		source.minDistance = sound.minimunDistance;
 		source.transform.position = position;
 		source.clip = sound.GetRandomAudioClip();
+		source.loop = sound.loop;
 		source.Play();
 		positionalSources.Enqueue(source);
 		return source;

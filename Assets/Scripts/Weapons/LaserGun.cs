@@ -12,12 +12,13 @@ namespace Game
 		GameObject owner;
 		bool currentlyFiring = false;
 		RaycastHit rayHit;
+		AudioSource sfxSource;
 
 	    public override void StartAttack(GameObject owner)
 		{
 			if (AmmoLoaded)
 			{
-				SoundManager.instance.PlaySoundAtPosition("Laser Gun Shoot", transform.position);
+				sfxSource = SoundManager.instance.PlaySoundAtPosition("Laser Gun Shoot", transform.position);
 				currentlyFiring = true;
 				laserParticles.SetActive(true);
 				StartCoroutine(ShootLaser());
@@ -47,6 +48,11 @@ namespace Game
 			currentlyFiring = false;
 			laserParticles.SetActive(false);
 			StopCoroutine(ShootLaser());
+			if (sfxSource != null)
+			{
+				sfxSource.Stop();
+				sfxSource = null;
+			}
 		}
 
 		public override void SecondaryAttack(GameObject owner)
