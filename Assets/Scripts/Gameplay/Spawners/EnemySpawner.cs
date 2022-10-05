@@ -18,6 +18,8 @@ namespace Game
 		static List<EnemySpawner> allSpawners = new List<EnemySpawner>();
 		int respawns;
 		float respawnDelay;
+		string chargeSound = "Spawner Charging";
+		string spawnSound = "Bot Spawn";
 
 	    public static void GlobalSpawnEnemies(int respawns, float respawnDelay)
 		{
@@ -45,8 +47,10 @@ namespace Game
 			while (respawns > 0)
 			{
 				particleEffects.SetActive(true);
+				SoundManager.instance.PlaySoundAtPosition(chargeSound, transform.position);
 				yield return new WaitForSeconds(spawnDelay);
 				Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPoint.position, spawnPoint.rotation);
+				SoundManager.instance.PlaySoundAtPosition(spawnSound, transform.position);
 				particleEffects.SetActive(false);
 				respawns--;
 				yield return new WaitForSeconds(respawnDelay);
