@@ -40,9 +40,10 @@ namespace Game
 
 		IEnumerator CheckForAttack()
 		{
+			WaitForSeconds wait = new WaitForSeconds(attackInterval);
 			while (true)
 			{
-				yield return new WaitForSeconds(attackInterval);
+				yield return wait;
 				if (Vector3.Distance(transform.position, target.transform.position) < attackRange)
 				{
 					attacking = true;
