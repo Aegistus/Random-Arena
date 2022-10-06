@@ -18,7 +18,7 @@ namespace Game
 		static List<EnemySpawner> allSpawners = new List<EnemySpawner>();
 		int respawns;
 		float respawnDelay;
-		string chargeSound = "Spawner Charging";
+		string chargeSound = "Spawner Charge";
 		string spawnSound = "Bot Spawn";
 
 	    public static void GlobalSpawnEnemies(int respawns, float respawnDelay)

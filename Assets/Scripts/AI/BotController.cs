@@ -29,6 +29,7 @@ namespace Game
 			StartCoroutine(UpdateTargetLocation());
 			StartCoroutine(CheckForAttack());
 			attackRangeSquared = Mathf.Pow(attackRange, 2);
+			movement.LookTarget = target.transform;
 		}
 
 		IEnumerator UpdateTargetLocation()
@@ -52,6 +53,7 @@ namespace Game
 				{
 					attacking = true;
 					attack.StartAttack();
+					movement.RotateTowardsTarget();
 				}
 				else
 				{
