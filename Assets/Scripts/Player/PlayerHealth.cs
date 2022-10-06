@@ -16,11 +16,12 @@ namespace Game
 			controller = GetComponent<CharacterController>();
 		}
 
-	    public override void Damage(AttackData data)
+	    public override bool Damage(AttackData data)
 		{
 			data.damage *= Globals.playerDamageTakenMod;
-			base.Damage(data);
+			bool successful = base.Damage(data);
 			SoundManager.instance.PlaySoundAtPosition("Player Impact", transform.position);
+			return successful;
 		}
 
 		public override void Heal(float heal)

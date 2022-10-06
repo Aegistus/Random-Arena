@@ -115,9 +115,12 @@ namespace Game
 				if (health != null)
 				{
 					float damage = beingThrown ? throwingDamage : meleeDamage;
-					health.Damage(new AttackData(owner, damage));
-					beingThrown = false;
-					attacking = false;
+					bool successful = health.Damage(new AttackData(owner, damage));
+					if (successful)
+					{
+						beingThrown = false;
+						attacking = false;
+					}
 				}
 			}
 		}

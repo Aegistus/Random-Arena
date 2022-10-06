@@ -24,7 +24,7 @@ namespace Game
 		{
 			if (!navAgent.enabled)
 			{
-				return;
+				navAgent.enabled = true;
 			}
 			destination = position;
 			navAgent.SetDestination(position);

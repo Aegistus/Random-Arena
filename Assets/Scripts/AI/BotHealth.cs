@@ -16,9 +16,9 @@ namespace Game
 			deathParticles.SetActive(false);
 		}		
 
-		public override void Damage(AttackData data)
+		public override bool Damage(AttackData data)
 		{
-			base.Damage(data);
+			bool successful = base.Damage(data);
 			Vector3 randPos = new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
 			hitParticles.transform.position = transform.position + randPos;
 			hitParticles.SetActive(true);
@@ -26,6 +26,7 @@ namespace Game
 			{
 				StartCoroutine(ParticleHide());
 			}
+			return successful;
 		}
 
 		IEnumerator ParticleHide()
