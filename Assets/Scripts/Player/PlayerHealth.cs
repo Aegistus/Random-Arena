@@ -49,6 +49,14 @@ namespace Game
 			}
 			lastYVelocity = controller.velocity.y;
 		}
+
+		public void Respawn()
+		{
+			GetComponent<PlayerMovement>().enabled = true;
+			GetComponent<PlayerAttack>().enabled = true;
+			GetComponentInChildren<CameraController>().enabled = true;
+			Heal(maxHealth);
+		}
 	}
 }
 

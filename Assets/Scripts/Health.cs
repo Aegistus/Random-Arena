@@ -17,6 +17,7 @@ namespace Game
 		public float MaxHealth => maxHealth;
 		public float CurrentHealth => currentHealth;
 		float currentHealth;
+		bool isDead = false;
 
 		protected virtual void Start()
 		{
@@ -27,12 +28,16 @@ namespace Game
 		public virtual bool Damage(AttackData data)
 		{
 			// prevents attacking self.
+			if (isDead)
+			{
+				return false;
+			}
 			if (data.owner == gameObject)
 			{
 				return false;
 			}
 			currentHealth -= data.damage;
-			if (currentHealth <= 0)
+			if (currentHealth <= 0 && !isDead)
 			{
 				currentHealth = 0;
 				Die();
@@ -48,11 +53,16 @@ namespace Game
 			{
 				currentHealth = maxHealth;
 			}
+			if (isDead)
+			{
+				isDead = false;
+			}
 			OnHealthChange?.Invoke(currentHealth, maxHealth);
 		}
 
 		public virtual void Die()
 		{
+			isDead = true;
 			OnDeath?.Invoke();
 		}
 	}

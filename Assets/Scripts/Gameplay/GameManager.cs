@@ -13,6 +13,7 @@ namespace Game
 		public static event Action OnGameLose;
 
 		[SerializeField] float objectiveStartDelay = 3f;
+		[SerializeField] Transform[] playerRespawnPoints;
 
 	    Objective[] objectivePool;
 		Rule[] rulePool;
@@ -21,8 +22,11 @@ namespace Game
 		Rule currentRule;
 		bool checkingObjective = false;
 
+		PlayerHealth playerHealth;
+
 		void Start()
 		{
+			Time.timeScale = 1;
 			objectivePool = new Objective[]
 			{
 				new DeathmatchObjective(),
@@ -35,6 +39,8 @@ namespace Game
 				new OnePlayerLifeRule(),
 			};
 			StartCoroutine(DeclareRuleAndObjective());
+			playerHealth = FindObjectOfType<PlayerHealth>();
+			playerHealth.OnDeath += OnPlayerDeath;
 		}
 
 		IEnumerator DeclareRuleAndObjective()
@@ -74,11 +80,31 @@ namespace Game
 		void WinGame()
 		{
 			OnGameWin?.Invoke();
+			Time.timeScale = 0;
 		}
 
 		void LoseGame()
 		{
 			OnGameLose?.Invoke();
+			Time.timeScale = 0;
+		}
+
+		void OnPlayerDeath()
+		{
+			StartCoroutine(RespawnTimer());
+		}
+
+		IEnumerator RespawnTimer()
+		{
+			yield return new WaitForSeconds(5);
+			RespawnPlayer();
+		}
+
+		public void RespawnPlayer()
+		{
+			GameObject player = playerHealth.gameObject;
+			player.transform.position = playerRespawnPoints[Random.Range(0, playerRespawnPoints.Length)].position;
+			playerHealth.Respawn();
 		}
 	}
 }
