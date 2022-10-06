@@ -329,7 +329,7 @@ MonoBehaviour:
   damage: 10
   gunTip: {fileID: 7200404082731738167}
   maxClipAmmo: 6
-  maxCarriedAmmo: 24
+  maxCarriedAmmo: 12
   reloadTime: 2
   resetTime: 0.2
 --- !u!95 &9178941830809412208

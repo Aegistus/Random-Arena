@@ -10,6 +10,13 @@ namespace Game
 		public float damage = 20f;
 		
 		GameObject owner;
+		string impactSound = "Bullet Impact";
+		int soundID;
+		
+		void Start()
+		{
+			soundID = SoundManager.instance.GetSoundID(impactSound);
+		}
 
 		public void SetOwner(GameObject owner)
 		{
@@ -23,6 +30,7 @@ namespace Game
 
 		void OnTriggerEnter(Collider other)
 		{
+			SoundManager.instance.PlaySoundAtPosition(soundID, transform.position);
 			Health otherHealth = other.GetComponentInParent<Health>();
 			if (otherHealth != null)
 			{

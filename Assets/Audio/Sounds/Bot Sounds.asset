@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8af0e3fab035dc419adb6218dd391f1, type: 3}
+  m_Name: Bot Sounds
+  m_EditorClassIdentifier: 
+  soundName: Bot Sounds
+  audioVariants:
+  - {fileID: 8300000, guid: 333d2a85816382047842123c8179a53f, type: 3}
+  - {fileID: 8300000, guid: 6b84095447626984c8b8fc1a768e86a1, type: 3}
+  - {fileID: 8300000, guid: 435f794ac1982b643a4c0776ec4ad063, type: 3}
+  - {fileID: 8300000, guid: a801ca5aef65e7f429b9cd2349f40cd1, type: 3}
+  - {fileID: 8300000, guid: 6c57984c592456e469e4535d2fffa862, type: 3}
+  - {fileID: 8300000, guid: fc6d38f2deb5f1f4fa84d0c3353251ec, type: 3}
+  - {fileID: 8300000, guid: f32a5fbc69854a945b3ab5073206091b, type: 3}
+  volume: 1
+  volumeVariance: 0.1
+  pitch: 1
+  pitchVariance: 0.1
+  minimunDistance: 1
+  loop: 0
+  mixerGroup: {fileID: 0}
+  source: {fileID: 0}

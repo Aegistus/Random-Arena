@@ -10,6 +10,9 @@ namespace Game
 		[SerializeField] GameObject deathParticles;
 		[SerializeField] GameObject[] botParts;
 
+		string botHitSound = "Bot Sounds";
+		string botDeathSound = "Bot Explosion";
+
 		void Awake()
 		{
 			hitParticles.SetActive(false);
@@ -21,6 +24,7 @@ namespace Game
 			bool successful = base.Damage(data);
 			Vector3 randPos = new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
 			hitParticles.transform.position = transform.position + randPos;
+			SoundManager.instance.PlaySoundAtPosition(botHitSound, transform.position);
 			hitParticles.SetActive(true);
 			if (gameObject.activeInHierarchy)
 			{
@@ -40,6 +44,7 @@ namespace Game
 			base.Die();
 			deathParticles.SetActive(true);
 			deathParticles.transform.SetParent(null, true);
+			SoundManager.instance.PlaySoundAtPosition(botDeathSound, transform.position);
 			foreach (var part in botParts)
 			{
 				part.AddComponent<Rigidbody>();

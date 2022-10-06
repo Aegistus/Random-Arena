@@ -34,6 +34,7 @@ namespace Game
 		{
 			GetComponent<PlayerMovement>().enabled = false;
 			GetComponent<PlayerAttack>().enabled = false;
+			GetComponentInChildren<CameraController>().enabled = false;
 			base.Die();
 		}
 

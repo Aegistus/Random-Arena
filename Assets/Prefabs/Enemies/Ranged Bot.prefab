@@ -319,6 +319,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4386262813785756137}
     m_Modifications:
+    - target: {fileID: 7200404083771477670, guid: 33bf1edce9a4fc3479e66acf9e8087d1, type: 3}
+      propertyPath: maxCarriedAmmo
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 7200404083771477671, guid: 33bf1edce9a4fc3479e66acf9e8087d1, type: 3}
       propertyPath: m_RootOrder
       value: 0
