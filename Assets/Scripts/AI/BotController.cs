@@ -9,6 +9,7 @@ namespace Game
 		[SerializeField] float updateInterval = .2f;
 		[SerializeField] float attackInterval = .5f;
 		[SerializeField] float attackRange = 1f;
+		[SerializeField] LayerMask groundLayer;
 
 	    protected BotMovement movement;
 		protected BotAttack attack;
@@ -44,6 +45,7 @@ namespace Game
 			}
 		}
 
+		RaycastHit rayHit;
 		IEnumerator CheckForAttack()
 		{
 			while (true)
@@ -51,9 +53,12 @@ namespace Game
 				yield return attackWait;
 				if ((transform.position - target.transform.position).sqrMagnitude < attackRangeSquared)
 				{
-					attacking = true;
-					attack.StartAttack();
-					movement.RotateTowardsTarget();
+					if (!Physics.Raycast(transform.position, target.transform.position - transform.position, 100f, groundLayer))
+					{
+						attacking = true;
+						attack.StartAttack();
+						movement.RotateTowardsTarget();
+					}
 				}
 				else
 				{

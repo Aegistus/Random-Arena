@@ -51,6 +51,9 @@ MonoBehaviour:
   updateInterval: 0.2
   attackInterval: 0.5
   attackRange: 10
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &3075695113112855095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,6 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stoppingDistance: 8
+  turnSpeed: 20
 --- !u!114 &3075695113112855092
 MonoBehaviour:
   m_ObjectHideFlags: 0

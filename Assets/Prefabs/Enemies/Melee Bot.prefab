@@ -4748,6 +4748,9 @@ MonoBehaviour:
   updateInterval: 0.2
   attackInterval: 0.5
   attackRange: 2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &2013993757007080880
 MonoBehaviour:
   m_ObjectHideFlags: 0
