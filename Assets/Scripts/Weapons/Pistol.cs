@@ -9,6 +9,8 @@ namespace Game
 		public float resetTime = .2f;
 
 		PoolManager pool;
+		string shotSound = "Revolver Shot";
+		int shootID = Animator.StringToHash("Shoot");
 
 		void Start()
 		{
@@ -22,8 +24,8 @@ namespace Game
 			{
 				GameObject bullet = pool.GetObjectOfTypeFromPool(PoolManager.PoolTag.Bullet, gunTip.position, gunTip.rotation);
 				bullet.GetComponent<Projectile>().SetOwner(owner);
-				anim.Play("Shoot");
-				SoundManager.instance.PlaySoundAtPosition("Revolver Shot", transform.position);
+				anim.Play(shootID);
+				SoundManager.instance.PlaySoundAtPosition(shotSound, transform.position);
 				readyToFire = false;
 				currentClipAmmo--;
 				StartCoroutine(ShotReset());

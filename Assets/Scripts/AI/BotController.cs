@@ -14,23 +14,28 @@ namespace Game
 		protected BotAttack attack;
 		protected GameObject target;
 		bool attacking = false;
+		float attackRangeSquared;
+		WaitForSeconds attackWait;
+		WaitForSeconds updateWait;
 
 		void Start()
 		{
+			attackWait = new WaitForSeconds(attackInterval);
+			updateWait = new WaitForSeconds(updateInterval);
 			target = FindObjectOfType<PlayerHealth>().gameObject;
 			movement = GetComponent<BotMovement>();
 			attack = GetComponent<BotAttack>();
 			movement.SetDestination(target.transform.position);
 			StartCoroutine(UpdateTargetLocation());
 			StartCoroutine(CheckForAttack());
+			attackRangeSquared = Mathf.Pow(attackRange, 2);
 		}
 
 		IEnumerator UpdateTargetLocation()
 		{
-			WaitForSeconds waitForSeconds = new WaitForSeconds(updateInterval);
 			while (true)
 			{
-				yield return waitForSeconds;
+				yield return updateWait;
 				if (!attacking)
 				{
 					movement.SetDestination(target.transform.position);
@@ -40,11 +45,10 @@ namespace Game
 
 		IEnumerator CheckForAttack()
 		{
-			WaitForSeconds wait = new WaitForSeconds(attackInterval);
 			while (true)
 			{
-				yield return wait;
-				if (Vector3.Distance(transform.position, target.transform.position) < attackRange)
+				yield return attackWait;
+				if ((transform.position - target.transform.position).sqrMagnitude < attackRangeSquared)
 				{
 					attacking = true;
 					attack.StartAttack();

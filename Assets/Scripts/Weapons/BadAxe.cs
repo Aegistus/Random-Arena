@@ -25,6 +25,9 @@ namespace Game
 		Vector3 originalLocalPosition;
 		Transform originalParent;
 		Quaternion originalChildRotation;
+		int attackHash = Animator.StringToHash("Attack");
+		string attackSound = "Bad Axe Attack";
+		string throwSound = "Bad Axe Throw";
 
 		void Awake()
 		{
@@ -41,8 +44,8 @@ namespace Game
 				return;
 			}
 			this.owner = owner;
-			anim.Play("Attack");
-			SoundManager.instance.PlaySoundAtPosition("Bad Axe Attack", transform.position);
+			anim.Play(attackHash);
+			SoundManager.instance.PlaySoundAtPosition(attackSound, transform.position);
 			attacking = true;
 			StartCoroutine(AttackTimer());
 		}
@@ -67,7 +70,7 @@ namespace Game
 			beingThrown = true;
 			this.owner = owner;
 			transform.SetParent(null, true);
-			SoundManager.instance.PlaySoundAtPosition("Bad Axe Throw", transform.position);
+			SoundManager.instance.PlaySoundAtPosition(throwSound, transform.position);
 			StartCoroutine(ReturnTimer());
 			anim.enabled = false;
 		}

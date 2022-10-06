@@ -20,11 +20,14 @@ namespace Game
 		protected bool readyToFire = true;
 		protected Animator anim;
 
+		WaitForSeconds reloadWait;
+
 		protected virtual void Awake()
 		{
 			currentClipAmmo = maxClipAmmo;
 			currentCarriedAmmo = maxCarriedAmmo;
 			anim = GetComponent<Animator>();
+			reloadWait = new WaitForSeconds(reloadTime);
 		}
 
 		public IEnumerator Reload()
@@ -33,7 +36,7 @@ namespace Game
 			{
 				readyToFire = false;
 				anim.Play("Reload");
-				yield return new WaitForSeconds(reloadTime);
+				yield return reloadWait;
 
 					int refillAmount = maxClipAmmo - currentClipAmmo;
 					if (currentCarriedAmmo >= refillAmount)
