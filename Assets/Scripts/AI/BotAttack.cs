@@ -11,6 +11,7 @@ namespace Game
 		Gun gun;
 		bool canAttack = true;
 		bool reloading = false;
+		WaitForSeconds attackWait;
 
 		protected override void Start()
 		{
@@ -19,6 +20,7 @@ namespace Game
 			{
 				gun = (Gun)CurrentWeapon;
 			}
+			attackWait = new WaitForSeconds(attackDelay);
 		}
 
 		public override void StartAttack()
@@ -45,7 +47,7 @@ namespace Game
 		IEnumerator AttackDelay()
 		{
 			canAttack = false;
-			yield return new WaitForSeconds(attackDelay);
+			yield return attackWait;
 			canAttack = true;
 		}
 	}
